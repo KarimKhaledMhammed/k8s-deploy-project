@@ -3,8 +3,11 @@ name: java_helm_package
 description: A Helm chart for Kubernetes
 
 # A chart can be either an 'application' or a 'library' chart.
-#
 # Application charts are a collection of templates that can be packaged into versioned archives
+# and deployed to Kubernetes using Helm. Library charts provide reusable helpers and functions
+# but do not define templates that can be deployed directly.
+#
+# Declare chart dependencies here. Example below adds Bitnami MySQL as a dependency.
 # to be deployed.
 #
 # Library charts provide useful utilities or functions for the chart developer. They're included as

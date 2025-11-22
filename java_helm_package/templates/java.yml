@@ -36,9 +36,6 @@ spec:
               cpu: "200m"
         ports:
         - containerPort: 8080
-        volumeMounts:
-        - name: java-app-config
-          mountPath: "/opt/config"
         command: ["java", "-jar", "/app/java.jar", "--spring.config.location=/opt/config/application.properties", "--spring.profiles.active=mysql"]
         startupProbe:
           httpGet:
@@ -61,13 +58,6 @@ spec:
           periodSeconds: 15
           failureThreshold: 3
           timeoutSeconds: 10
-      volumes:
-      - name: java-app-config
-        configMap:
-          name: java-app-config
-          items:
-          - key: application.properties
-            path: application.properties
 
 ---
 apiVersion: v1

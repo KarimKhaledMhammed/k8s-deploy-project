@@ -42,7 +42,8 @@ spec:
             path: /actuator/health
             port: 8080
           failureThreshold: 30
-          periodSeconds: 20
+          periodSeconds: 10
+          timeoutSeconds: 10
           initialDelaySeconds: 180
         readinessProbe:
           httpGet:
@@ -58,7 +59,15 @@ spec:
           periodSeconds: 15
           failureThreshold: 3
           timeoutSeconds: 10
-
+        volumeMounts:
+        - name: app-config
+          mountPath: /opt/config
+          readOnly: true
+      
+      volumes:
+      - name: app-config
+        configMap:
+          name: app-config
 ---
 apiVersion: v1
 kind: Service
